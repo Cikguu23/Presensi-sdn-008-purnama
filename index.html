@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Presensi Siswa</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        :root {
+            --primary-green: #28a745;
+            --dark-green: #218838;
+        }
+        .btn-primary { background-color: var(--primary-green); transition: background-color 0.3s; }
+        .btn-primary:hover { background-color: var(--dark-green); }
+        .nav-link.active { color: var(--primary-green); border-bottom: 2px solid var(--primary-green); font-weight: 600; }
+        .page { display: none; }
+        .page.active { display: block; }
+        .radio-label { transition: all 0.2s ease-in-out; }
+        .radio-input:checked + .radio-label { background-color: var(--primary-green); color: white; border-color: var(--dark-green); transform: scale(1.05); }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between py-4">
+                <div class="flex items-center space-x-4">
+                    <img src="https://iili.io/FjH584s.png" alt="Logo Sekolah" class="h-12 w-12 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/50x50/eeeeee/333333?text=Logo';">
+                    <h1 class="text-xl md:text-2xl font-bold text-gray-800 hidden sm:block">SISTEM PRESENSI SISWA</h1>
+                </div>
+                <div class="text-right text-sm">
+                    <div id="date" class="font-semibold text-gray-600"></div>
+                    <div id="time" class="font-mono text-gray-700"></div>
+                </div>
+            </div>
+            <nav class="flex items-center justify-center border-t border-gray-200">
+                <ul class="flex space-x-4 sm:space-x-8 py-3 overflow-x-auto">
+                    <li><a href="#beranda" class="nav-link p-2 whitespace-nowrap">Beranda</a></li>
+                    <li><a href="#siswa" class="nav-link p-2 whitespace-nowrap">Data Siswa</a></li>
+                    <li><a href="#absen" class="nav-link p-2 whitespace-nowrap">Presensi</a></li>
+                    <li><a href="#rekap" class="nav-link p-2 whitespace-nowrap">Rekap</a></li>
+                    <li><a href="#ekspor" class="nav-link p-2 whitespace-nowrap">Ekspor</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <!-- Halaman Beranda -->
+        <section id="page-beranda" class="page">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-2xl font-bold mb-2">Selamat Datang di Sistem Presensi!</h2>
+                <p class="text-gray-600 mb-6">Platform digital untuk mengelola kehadiran siswa dengan mudah dan efisien. Pilih salah satu menu di bawah untuk memulai.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <a href="#siswa" class="page-link bg-gray-50 hover:bg-gray-100 p-6 rounded-lg shadow-sm text-center transition duration-300 transform hover:-translate-y-1">
+                        <div class="text-5xl mb-4" style="color: var(--primary-green);">🧑‍🎓</div>
+                        <h3 class="font-bold text-lg">Data Siswa</h3>
+                        <p class="text-sm text-gray-500">Lihat dan kelola data siswa per kelas.</p>
+                    </a>
+                    <a href="#absen" class="page-link bg-gray-50 hover:bg-gray-100 p-6 rounded-lg shadow-sm text-center transition duration-300 transform hover:-translate-y-1">
+                        <div class="text-5xl mb-4" style="color: var(--primary-green);">📋</div>
+                        <h3 class="font-bold text-lg">Input Presensi</h3>
+                        <p class="text-sm text-gray-500">Catat kehadiran harian siswa.</p>
+                    </a>
+                    <a href="#rekap" class="page-link bg-gray-50 hover:bg-gray-100 p-6 rounded-lg shadow-sm text-center transition duration-300 transform hover:-translate-y-1">
+                        <div class="text-5xl mb-4" style="color: var(--primary-green);">📊</div>
+                        <h3 class="font-bold text-lg">Rekapitulasi</h3>
+                        <p class="text-sm text-gray-500">Lihat laporan kehadiran.</p>
+                    </a>
+                    <a href="#ekspor" class="page-link bg-gray-50 hover:bg-gray-100 p-6 rounded-lg shadow-sm text-center transition duration-300 transform hover:-translate-y-1">
+                        <div class="text-5xl mb-4" style="color: var(--primary-green);">📦</div>
+                        <h3 class="font-bold text-lg">Ekspor Data</h3>
+                        <p class="text-sm text-gray-500">Unduh data dalam format Excel.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Halaman Data Siswa -->
+        <section id="page-siswa" class="page">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="flex justify-between items-center mb-4 flex-wrap gap-4">
+                    <h2 class="text-2xl font-bold">🧑‍🎓 Data Siswa</h2>
+                    <button id="btn-tambah-siswa" class="btn-primary text-white font-bold py-2 px-4 rounded-md shadow-sm inline-flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" /></svg>
+                        <span>Tambah Siswa</span>
+                    </button>
+                </div>
+                <div id="form-tambah-siswa" class="hidden bg-gray-50 p-4 rounded-lg mb-6 border border-gray-200">
+                    <h3 class="text-lg font-semibold mb-3">Formulir Siswa Baru</h3>
+                    <form id="form-add-student" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="input-nama" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                            <input type="text" id="input-nama" placeholder="Nama lengkap siswa" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
+                        </div>
+                        <div>
+                            <label for="input-kelas" class="block text-sm font-medium text-gray-700">Kelas</label>
+                            <select id="input-kelas" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
+                                <option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="input-gender" class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
+                            <select id="input-gender" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
+                                <option value="Laki-laki">Laki-laki</option><option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2 flex justify-end space-x-3 mt-2">
+                            <button type="button" id="btn-batal-tambah" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-md">Batal</button>
+                            <button type="submit" class="btn-primary text-white font-bold py-2 px-4 rounded-md">Simpan Siswa</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="mb-4">
+                    <label for="filter-kelas-siswa" class="block text-sm font-medium text-gray-700 mb-1">Filter Kelas:</label>
+                    <select id="filter-kelas-siswa" class="w-full sm:w-auto p-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
+                        <option value="semua">Semua Kelas</option>
+                        <option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option>
+                    </select>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Lengkap</th>
+                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kelas</th>
+                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jenis Kelamin</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabel-siswa" class="divide-y divide-gray-200"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Halaman Form Presensi -->
+        <section id="page-absen" class="page">
+            <div class="bg-white p-6 rounded-lg shadow">
+                 <h2 class="text-2xl font-bold mb-4">📋 Input Presensi</h2>
+                 <div class="flex flex-wrap gap-4 items-end mb-6">
+                    <div>
+                        <label for="tanggal-presensi" class="block text-sm font-medium text-gray-700">Tanggal</label>
+                        <input type="date" id="tanggal-presensi" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="filter-kelas-presensi" class="block text-sm font-medium text-gray-700">Kelas</label>
+                        <select id="filter-kelas-presensi" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                            <option value="semua">Pilih Kelas</option>
+                            <option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option>
+                        </select>
+                    </div>
+                    <button id="btn-hadir-semua" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-sm">Hadir Semua</button>
+                 </div>
+                 <div id="list-presensi-siswa" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+                 <div class="mt-8 text-center">
+                    <button id="btn-simpan-presensi" class="btn-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg">✓ Simpan Presensi</button>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Halaman Rekap -->
+        <section id="page-rekap" class="page">
+             <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-2xl font-bold mb-4">📊 Rekapitulasi Presensi</h2>
+                <div class="flex flex-wrap gap-4 mb-4">
+                    <div>
+                        <label for="filter-kelas-rekap" class="block text-sm font-medium text-gray-700 mb-1">Kelas:</label>
+                        <select id="filter-kelas-rekap" class="p-2 border border-gray-300 rounded-md shadow-sm">
+                            <option value="semua">Semua Kelas</option>
+                            <option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filter-tanggal-rekap" class="block text-sm font-medium text-gray-700 mb-1">Tanggal:</label>
+                        <input type="date" id="filter-tanggal-rekap" class="p-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
+                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Siswa</th>
+                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kelas</th>
+                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabel-rekap" class="divide-y divide-gray-200"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Halaman Ekspor -->
+        <section id="page-ekspor" class="page">
+            <div class="bg-white p-6 rounded-lg shadow max-w-2xl mx-auto text-center">
+                <h2 class="text-2xl font-bold mb-4">📦 Ekspor Data Presensi</h2>
+                <p class="text-gray-600 mb-6">Unduh data rekapitulasi presensi ke dalam format file Excel. Pilih filter yang diinginkan sebelum mengunduh.</p>
+                <div class="max-w-xs mx-auto mb-6">
+                    <label for="filter-kelas-ekspor" class="block text-sm font-medium text-gray-700 mb-1">Pilih Kelas:</label>
+                    <select id="filter-kelas-ekspor" class="w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                        <option value="semua">Semua Kelas</option>
+                        <option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option>
+                    </select>
+                </div>
+                <button id="btn-ekspor" class="btn-primary text-white font-bold py-3 px-6 rounded-md shadow-lg inline-flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                    <span>Ekspor ke Excel</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white text-center p-4 mt-auto">
+        <p>DESIGN BY JUNID</p>
+    </footer>
+
+    <!-- [BARU] Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- JavaScript Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- [PENTING] KONFIGURASI FIREBASE ---
+            // Kode ini sudah diganti dengan konfigurasi Anda.
+            const firebaseConfig = {
+              apiKey: "AIzaSyBYFpugN9OF9tif-kiL3jFTx9eZu9s2tzc",
+              authDomain: "presensi-siswa-sdn-008-purnama.firebaseapp.com",
+              projectId: "presensi-siswa-sdn-008-purnama",
+              storageBucket: "presensi-siswa-sdn-008-purnama.appspot.com",
+              messagingSenderId: "816637936645",
+              appId: "1:816637936645:web:55d4267bee95b4c03d086c"
+            };
+
+            // --- Inisialisasi Firebase ---
+            try {
+                firebase.initializeApp(firebaseConfig);
+            } catch(e) {
+                console.error("Error inisialisasi Firebase. Pastikan Anda sudah mengisi firebaseConfig dengan benar.", e);
+                alert("Gagal terhubung ke database. Cek konfigurasi Firebase Anda.");
+                return;
+            }
+            
+            const db = firebase.firestore();
+            const siswaCollection = db.collection("siswa");
+            const presensiCollection = db.collection("presensi");
+
+            // --- Variabel Lokal untuk menampung data dari Firebase ---
+            let localDataSiswa = [];
+            let localDataPresensi = [];
+
+            // --- ELEMEN DOM ---
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pageLinks = document.querySelectorAll('.page-link');
+            const pages = document.querySelectorAll('.page');
+            const timeEl = document.getElementById('time');
+            const dateEl = document.getElementById('date');
+            const tabelSiswaBody = document.getElementById('tabel-siswa');
+            const filterKelasSiswa = document.getElementById('filter-kelas-siswa');
+            const tabelRekapBody = document.getElementById('tabel-rekap');
+            const btnEkspor = document.getElementById('btn-ekspor');
+            const tanggalRekapInput = document.getElementById('filter-tanggal-rekap');
+            const btnTambahSiswa = document.getElementById('btn-tambah-siswa');
+            const formTambahSiswa = document.getElementById('form-tambah-siswa');
+            const formAddStudent = document.getElementById('form-add-student');
+            const btnBatalTambah = document.getElementById('btn-batal-tambah');
+            const listPresensiContainer = document.getElementById('list-presensi-siswa');
+            const filterKelasPresensi = document.getElementById('filter-kelas-presensi');
+            const btnHadirSemua = document.getElementById('btn-hadir-semua');
+            const btnSimpanPresensi = document.getElementById('btn-simpan-presensi');
+            const tanggalPresensiInput = document.getElementById('tanggal-presensi');
+
+
+            // --- FUNGSI-FUNGSI ---
+
+            function showPage(pageId) {
+                pages.forEach(page => page.classList.toggle('active', page.id === `page-${pageId}`));
+                navLinks.forEach(link => link.classList.toggle('active', link.hash === `#${pageId}`));
+                window.location.hash = pageId;
+                if (pageId === 'absen') populatePresensiList(filterKelasPresensi.value);
+            }
+
+            function updateClock() {
+                const now = new Date();
+                const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                if (timeEl) timeEl.textContent = now.toLocaleTimeString('id-ID');
+                if (dateEl) dateEl.textContent = now.toLocaleDateString('id-ID', optionsDate);
+            }
+            
+            function populateTabelSiswa(filterKelas = 'semua') {
+                tabelSiswaBody.innerHTML = '';
+                const sortedData = localDataSiswa.sort((a,b) => a.nama.localeCompare(b.nama));
+                const filteredData = sortedData.filter(siswa => filterKelas === 'semua' || siswa.kelas === filterKelas);
+                
+                if (filteredData.length === 0) {
+                     tabelSiswaBody.innerHTML = `<tr><td colspan="3" class="text-center py-4">Belum ada data siswa. Silakan tambahkan siswa baru.</td></tr>`;
+                     return;
+                }
+                filteredData.forEach(siswa => {
+                    tabelSiswaBody.innerHTML += `
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-3 px-4 text-sm font-medium text-gray-900">${siswa.nama}</td>
+                            <td class="py-3 px-4 text-sm text-gray-700">${siswa.kelas}</td>
+                            <td class="py-3 px-4 text-sm text-gray-700">${siswa.gender}</td>
+                        </tr>
+                    `;
+                });
+            }
+            
+            function populatePresensiList(filterKelas = 'semua') {
+                listPresensiContainer.innerHTML = '';
+                 if (filterKelas === 'semua') {
+                    listPresensiContainer.innerHTML = `<p class="col-span-full text-center text-gray-500">Silakan pilih kelas untuk menampilkan daftar siswa.</p>`;
+                    return;
+                }
+                const sortedData = localDataSiswa.sort((a,b) => a.nama.localeCompare(b.nama));
+                const filteredData = sortedData.filter(siswa => siswa.kelas === filterKelas);
+
+                if (filteredData.length === 0) {
+                    listPresensiContainer.innerHTML = `<p class="col-span-full text-center text-gray-500">Tidak ada siswa di kelas ini. Tambahkan siswa terlebih dahulu.</p>`;
+                    return;
+                }
+                filteredData.forEach(siswa => {
+                    const card = document.createElement('div');
+                    card.className = 'bg-white border border-gray-200 rounded-lg p-4 shadow-sm transition-all duration-300';
+                    card.setAttribute('data-student-id', siswa.id);
+                    card.innerHTML = `
+                        <h3 class="font-bold text-gray-800 truncate">${siswa.nama}</h3>
+                        <p class="text-xs text-gray-500 mb-3">Kelas ${siswa.kelas}</p>
+                        <div class="flex justify-around items-center text-xs">
+                            <div><input type="radio" name="status-${siswa.id}" id="hadir-${siswa.id}" value="Hadir" class="hidden radio-input" checked><label for="hadir-${siswa.id}" class="radio-label cursor-pointer p-2 rounded-full border w-12 text-center">Hadir</label></div>
+                            <div><input type="radio" name="status-${siswa.id}" id="sakit-${siswa.id}" value="Sakit" class="hidden radio-input"><label for="sakit-${siswa.id}" class="radio-label cursor-pointer p-2 rounded-full border w-12 text-center">Sakit</label></div>
+                            <div><input type="radio" name="status-${siswa.id}" id="izin-${siswa.id}" value="Izin" class="hidden radio-input"><label for="izin-${siswa.id}" class="radio-label cursor-pointer p-2 rounded-full border w-12 text-center">Izin</label></div>
+                            <div><input type="radio" name="status-${siswa.id}" id="alfa-${siswa.id}" value="Alfa" class="hidden radio-input"><label for="alfa-${siswa.id}" class="radio-label cursor-pointer p-2 rounded-full border w-12 text-center">Alfa</label></div>
+                        </div>
+                    `;
+                    listPresensiContainer.appendChild(card);
+                });
+            }
+
+            function populateTabelRekap() {
+                tabelRekapBody.innerHTML = '';
+                if (localDataPresensi.length === 0) {
+                     tabelRekapBody.innerHTML = `<tr><td colspan="5" class="text-center py-4">Belum ada data presensi.</td></tr>`;
+                     return;
+                }
+                const sortedPresensi = localDataPresensi.sort((a, b) => b.tanggal.localeCompare(a.tanggal));
+                sortedPresensi.forEach(rekap => {
+                    tabelRekapBody.innerHTML += `
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-3 px-4 text-sm text-gray-700">${new Date(rekap.tanggal).toLocaleDateString('id-ID', {day: '2-digit', month: '2-digit', year: 'numeric'})}</td>
+                            <td class="py-3 px-4 text-sm font-medium text-gray-900">${rekap.nama}</td>
+                            <td class="py-3 px-4 text-sm text-gray-700">${rekap.kelas}</td>
+                            <td class="py-3 px-4 text-sm text-gray-700">${rekap.status}</td>
+                            <td class="py-3 px-4 text-sm text-gray-700">${rekap.keterangan}</td>
+                        </tr>
+                    `;
+                });
+            }
+            
+            function exportToCsv(filename, rows) {
+                if (!rows || rows.length === 0) { alert("Tidak ada data untuk diekspor."); return; }
+                const separator = ',';
+                const keys = Object.keys(rows[0]);
+                const csvContent = keys.join(separator) + '\n' + rows.map(row => {
+                    return keys.map(k => {
+                        let cell = row[k] === null || row[k] === undefined ? '' : row[k];
+                        cell = cell instanceof Date ? cell.toLocaleString() : cell.toString().replace(/"/g, '""');
+                        if (cell.search(/("|,|\n)/g) >= 0) cell = `"${cell}"`;
+                        return cell;
+                    }).join(separator);
+                }).join('\n');
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement('a');
+                if (link.download !== undefined) {
+                    const url = URL.createObjectURL(blob);
+                    link.setAttribute('href', url);
+                    link.setAttribute('download', filename);
+                    link.style.visibility = 'hidden';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+            }
+
+            // --- EVENT LISTENERS ---
+            
+            const allLinks = [...navLinks, ...pageLinks];
+            allLinks.forEach(link => link.addEventListener('click', e => { e.preventDefault(); showPage(e.currentTarget.hash.substring(1)); }));
+            filterKelasSiswa.addEventListener('change', e => populateTabelSiswa(e.target.value));
+            filterKelasPresensi.addEventListener('change', e => populatePresensiList(e.target.value));
+            btnHadirSemua.addEventListener('click', () => listPresensiContainer.querySelectorAll('input[type="radio"][value="Hadir"]').forEach(rb => rb.checked = true));
+
+            btnSimpanPresensi.addEventListener('click', () => {
+                const tanggal = tanggalPresensiInput.value;
+                if (!tanggal) { alert('Silakan pilih tanggal presensi terlebih dahulu.'); return; }
+                const studentCards = listPresensiContainer.querySelectorAll('[data-student-id]');
+                if (studentCards.length === 0) { alert('Tidak ada siswa untuk disimpan presensinya.'); return; }
+
+                const batch = db.batch();
+                studentCards.forEach(card => {
+                    const studentId = card.getAttribute('data-student-id');
+                    const selectedStatus = card.querySelector(`input[name="status-${studentId}"]:checked`);
+                    if (selectedStatus) {
+                        const siswaData = localDataSiswa.find(s => s.id === studentId);
+                        const newPresensiRef = presensiCollection.doc();
+                        batch.set(newPresensiRef, {
+                            tanggal: tanggal,
+                            nama: siswaData.nama,
+                            kelas: siswaData.kelas,
+                            status: selectedStatus.value,
+                            keterangan: '-' 
+                        });
+                    }
+                });
+                batch.commit().then(() => {
+                    alert(`${studentCards.length} data presensi berhasil disimpan!`);
+                    showPage('rekap');
+                }).catch(e => console.error("Error menyimpan presensi: ", e));
+            });
+
+            btnEkspor.addEventListener('click', function() {
+                const filterKelas = document.getElementById('filter-kelas-ekspor').value;
+                const dataToExport = localDataPresensi.filter(p => filterKelas === 'semua' || p.kelas === filterKelas);
+                const today = new Date().toLocaleDateString('id-ID', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/\//g, '-');
+                exportToCsv(`rekap-presensi-${today}.csv`, dataToExport);
+            });
+
+            btnTambahSiswa.addEventListener('click', () => {
+                formTambahSiswa.classList.remove('hidden');
+                btnTambahSiswa.classList.add('hidden');
+            });
+            btnBatalTambah.addEventListener('click', () => {
+                formTambahSiswa.classList.add('hidden');
+                btnTambahSiswa.classList.remove('hidden');
+                formAddStudent.reset();
+            });
+
+            formAddStudent.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const newStudent = {
+                    nama: document.getElementById('input-nama').value,
+                    kelas: document.getElementById('input-kelas').value,
+                    gender: document.getElementById('input-gender').value,
+                };
+                siswaCollection.add(newStudent).then(() => {
+                    alert(`Siswa baru "${newStudent.nama}" berhasil ditambahkan!`);
+                    formAddStudent.reset();
+                    formTambahSiswa.classList.add('hidden');
+                    btnTambahSiswa.classList.remove('hidden');
+                }).catch(e => console.error("Error menambah siswa: ", e));
+            });
+
+            // --- INISIALISASI & REAL-TIME LISTENER ---
+
+            const today = new Date().toISOString().split('T')[0];
+            tanggalPresensiInput.value = today;
+            tanggalRekapInput.value = today;
+
+            updateClock();
+            setInterval(updateClock, 1000);
+
+            // Listener untuk data siswa
+            siswaCollection.onSnapshot(snapshot => {
+                localDataSiswa = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                populateTabelSiswa(filterKelasSiswa.value);
+            }, err => console.error("Error fetching siswa: ", err));
+
+            // Listener untuk data presensi
+            presensiCollection.onSnapshot(snapshot => {
+                localDataPresensi = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                populateTabelRekap();
+            }, err => console.error("Error fetching presensi: ", err));
+
+            const initialPage = window.location.hash ? window.location.hash.substring(1) : 'beranda';
+            showPage(initialPage);
+        });
+    </script>
+</body>
+</html>
