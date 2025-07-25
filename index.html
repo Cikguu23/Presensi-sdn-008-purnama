@@ -50,6 +50,7 @@
                     <li><a href="#siswa" class="nav-link p-2 whitespace-nowrap">Data Siswa</a></li>
                     <li><a href="#absen" class="nav-link p-2 whitespace-nowrap">Presensi</a></li>
                     <li><a href="#rekap" class="nav-link p-2 whitespace-nowrap">Rekap</a></li>
+                    <li><a href="#statistik" class="nav-link p-2 whitespace-nowrap">Statistik</a></li>
                     <li><a href="#ekspor" class="nav-link p-2 whitespace-nowrap">Ekspor</a></li>
                 </ul>
             </nav>
@@ -65,26 +66,10 @@
                 <h2 class="text-2xl font-bold mb-2">Selamat Datang di Sistem Presensi!</h2>
                 <p class="text-gray-600 mb-6">Platform digital untuk mengelola kehadiran siswa dengan mudah dan efisien. Pilih salah satu menu di bawah untuk memulai.</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <a href="#siswa" class="page-link bg-gray-50 hover:bg-gray-100 p-6 rounded-lg shadow-sm text-center transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-5xl mb-4" style="color: var(--primary-green);">🧑‍🎓</div>
-                        <h3 class="font-bold text-lg">Data Siswa</h3>
-                        <p class="text-sm text-gray-500">Lihat dan kelola data siswa per kelas.</p>
-                    </a>
-                    <a href="#absen" class="page-link bg-gray-50 hover:bg-gray-100 p-6 rounded-lg shadow-sm text-center transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-5xl mb-4" style="color: var(--primary-green);">📋</div>
-                        <h3 class="font-bold text-lg">Input Presensi</h3>
-                        <p class="text-sm text-gray-500">Catat kehadiran harian siswa.</p>
-                    </a>
-                    <a href="#rekap" class="page-link bg-gray-50 hover:bg-gray-100 p-6 rounded-lg shadow-sm text-center transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-5xl mb-4" style="color: var(--primary-green);">📊</div>
-                        <h3 class="font-bold text-lg">Rekapitulasi</h3>
-                        <p class="text-sm text-gray-500">Lihat laporan kehadiran.</p>
-                    </a>
-                    <a href="#ekspor" class="page-link bg-gray-50 hover:bg-gray-100 p-6 rounded-lg shadow-sm text-center transition duration-300 transform hover:-translate-y-1">
-                        <div class="text-5xl mb-4" style="color: var(--primary-green);">📦</div>
-                        <h3 class="font-bold text-lg">Ekspor Data</h3>
-                        <p class="text-sm text-gray-500">Unduh data dalam format Excel.</p>
-                    </a>
+                    <a href="#siswa" class="page-link bg-gray-50 hover:bg-gray-100 p-6 rounded-lg shadow-sm text-center transition duration-300 transform hover:-translate-y-1"><div class="text-5xl mb-4" style="color: var(--primary-green);">🧑‍🎓</div><h3 class="font-bold text-lg">Data Siswa</h3><p class="text-sm text-gray-500">Lihat dan kelola data siswa per kelas.</p></a>
+                    <a href="#absen" class="page-link bg-gray-50 hover:bg-gray-100 p-6 rounded-lg shadow-sm text-center transition duration-300 transform hover:-translate-y-1"><div class="text-5xl mb-4" style="color: var(--primary-green);">📋</div><h3 class="font-bold text-lg">Input Presensi</h3><p class="text-sm text-gray-500">Catat kehadiran harian siswa.</p></a>
+                    <a href="#statistik" class="page-link bg-gray-50 hover:bg-gray-100 p-6 rounded-lg shadow-sm text-center transition duration-300 transform hover:-translate-y-1"><div class="text-5xl mb-4" style="color: var(--primary-green);">📈</div><h3 class="font-bold text-lg">Statistik</h3><p class="text-sm text-gray-500">Lihat statistik kehadiran siswa.</p></a>
+                    <a href="#ekspor" class="page-link bg-gray-50 hover:bg-gray-100 p-6 rounded-lg shadow-sm text-center transition duration-300 transform hover:-translate-y-1"><div class="text-5xl mb-4" style="color: var(--primary-green);">📦</div><h3 class="font-bold text-lg">Ekspor Data</h3><p class="text-sm text-gray-500">Unduh data dalam format Excel.</p></a>
                 </div>
             </div>
         </section>
@@ -94,55 +79,19 @@
             <div class="bg-white p-6 rounded-lg shadow">
                 <div class="flex justify-between items-center mb-4 flex-wrap gap-4">
                     <h2 class="text-2xl font-bold">🧑‍🎓 Data Siswa</h2>
-                    <button id="btn-tambah-siswa" class="btn-primary text-white font-bold py-2 px-4 rounded-md shadow-sm inline-flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" /></svg>
-                        <span>Tambah Siswa</span>
-                    </button>
+                    <button id="btn-tambah-siswa" class="btn-primary text-white font-bold py-2 px-4 rounded-md shadow-sm inline-flex items-center space-x-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" /></svg><span>Tambah Siswa</span></button>
                 </div>
                 <div id="form-tambah-siswa" class="hidden bg-gray-50 p-4 rounded-lg mb-6 border border-gray-200">
                     <h3 class="text-lg font-semibold mb-3">Formulir Siswa Baru</h3>
                     <form id="form-add-student" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="input-nama" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
-                            <input type="text" id="input-nama" placeholder="Nama lengkap siswa" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
-                        </div>
-                        <div>
-                            <label for="input-kelas" class="block text-sm font-medium text-gray-700">Kelas</label>
-                            <select id="input-kelas" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
-                                <option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option>
-                            </select>
-                        </div>
-                        <div class="md:col-span-2">
-                            <label for="input-gender" class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
-                            <select id="input-gender" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
-                                <option value="Laki-laki">Laki-laki</option><option value="Perempuan">Perempuan</option>
-                            </select>
-                        </div>
-                        <div class="md:col-span-2 flex justify-end space-x-3 mt-2">
-                            <button type="button" id="btn-batal-tambah" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-md">Batal</button>
-                            <button type="submit" class="btn-primary text-white font-bold py-2 px-4 rounded-md">Simpan Siswa</button>
-                        </div>
+                        <div><label for="input-nama" class="block text-sm font-medium text-gray-700">Nama Lengkap</label><input type="text" id="input-nama" placeholder="Nama lengkap siswa" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required></div>
+                        <div><label for="input-kelas" class="block text-sm font-medium text-gray-700">Kelas</label><select id="input-kelas" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required><option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option></select></div>
+                        <div class="md:col-span-2"><label for="input-gender" class="block text-sm font-medium text-gray-700">Jenis Kelamin</label><select id="input-gender" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required><option value="Laki-laki">Laki-laki</option><option value="Perempuan">Perempuan</option></select></div>
+                        <div class="md:col-span-2 flex justify-end space-x-3 mt-2"><button type="button" id="btn-batal-tambah" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-md">Batal</button><button type="submit" class="btn-primary text-white font-bold py-2 px-4 rounded-md">Simpan Siswa</button></div>
                     </form>
                 </div>
-                <div class="mb-4">
-                    <label for="filter-kelas-siswa" class="block text-sm font-medium text-gray-700 mb-1">Filter Kelas:</label>
-                    <select id="filter-kelas-siswa" class="w-full sm:w-auto p-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
-                        <option value="semua">Semua Kelas</option>
-                        <option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option>
-                    </select>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full bg-white">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Lengkap</th>
-                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kelas</th>
-                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jenis Kelamin</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tabel-siswa" class="divide-y divide-gray-200"></tbody>
-                    </table>
-                </div>
+                <div class="mb-4"><label for="filter-kelas-siswa" class="block text-sm font-medium text-gray-700 mb-1">Filter Kelas:</label><select id="filter-kelas-siswa" class="w-full sm:w-auto p-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"><option value="semua">Semua Kelas</option><option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option></select></div>
+                <div class="overflow-x-auto"><table class="min-w-full bg-white"><thead class="bg-gray-50"><tr><th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Lengkap</th><th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kelas</th><th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jenis Kelamin</th></tr></thead><tbody id="tabel-siswa" class="divide-y divide-gray-200"></tbody></table></div>
             </div>
         </section>
 
@@ -151,57 +100,37 @@
             <div class="bg-white p-6 rounded-lg shadow">
                  <h2 class="text-2xl font-bold mb-4">📋 Input Presensi</h2>
                  <div class="flex flex-wrap gap-4 items-end mb-6">
-                    <div>
-                        <label for="tanggal-presensi" class="block text-sm font-medium text-gray-700">Tanggal</label>
-                        <input type="date" id="tanggal-presensi" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
-                    </div>
-                    <div>
-                        <label for="filter-kelas-presensi" class="block text-sm font-medium text-gray-700">Kelas</label>
-                        <select id="filter-kelas-presensi" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
-                            <option value="semua">Pilih Kelas</option>
-                            <option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option>
-                        </select>
-                    </div>
+                    <div><label for="tanggal-presensi" class="block text-sm font-medium text-gray-700">Tanggal</label><input type="date" id="tanggal-presensi" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"></div>
+                    <div><label for="filter-kelas-presensi" class="block text-sm font-medium text-gray-700">Kelas</label><select id="filter-kelas-presensi" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"><option value="semua">Pilih Kelas</option><option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option></select></div>
                     <button id="btn-hadir-semua" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-sm">Hadir Semua</button>
                  </div>
                  <div id="list-presensi-siswa" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
-                 <div class="mt-8 text-center">
-                    <button id="btn-simpan-presensi" class="btn-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg">✓ Simpan Presensi</button>
-                 </div>
+                 <div class="mt-8 text-center"><button id="btn-simpan-presensi" class="btn-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg">✓ Simpan Presensi</button></div>
             </div>
         </section>
 
         <!-- Halaman Rekap -->
         <section id="page-rekap" class="page">
              <div class="bg-white p-6 rounded-lg shadow">
-                <h2 class="text-2xl font-bold mb-4">📊 Rekapitulasi Presensi</h2>
+                <h2 class="text-2xl font-bold mb-4">📊 Rekapitulasi Presensi Harian</h2>
                 <div class="flex flex-wrap gap-4 mb-4">
-                    <div>
-                        <label for="filter-kelas-rekap" class="block text-sm font-medium text-gray-700 mb-1">Kelas:</label>
-                        <select id="filter-kelas-rekap" class="p-2 border border-gray-300 rounded-md shadow-sm">
-                            <option value="semua">Semua Kelas</option>
-                            <option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="filter-tanggal-rekap" class="block text-sm font-medium text-gray-700 mb-1">Tanggal:</label>
-                        <input type="date" id="filter-tanggal-rekap" class="p-2 border border-gray-300 rounded-md shadow-sm">
-                    </div>
+                    <div><label for="filter-kelas-rekap" class="block text-sm font-medium text-gray-700 mb-1">Kelas:</label><select id="filter-kelas-rekap" class="p-2 border border-gray-300 rounded-md shadow-sm"><option value="semua">Semua Kelas</option><option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option></select></div>
+                    <div><label for="filter-tanggal-rekap" class="block text-sm font-medium text-gray-700 mb-1">Tanggal:</label><input type="date" id="filter-tanggal-rekap" class="p-2 border border-gray-300 rounded-md shadow-sm"></div>
                 </div>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full bg-white">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
-                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Siswa</th>
-                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kelas</th>
-                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Keterangan</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tabel-rekap" class="divide-y divide-gray-200"></tbody>
-                    </table>
+                <div class="overflow-x-auto"><table class="min-w-full bg-white"><thead class="bg-gray-50"><tr><th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th><th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Siswa</th><th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kelas</th><th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th><th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Keterangan</th></tr></thead><tbody id="tabel-rekap" class="divide-y divide-gray-200"></tbody></table></div>
+            </div>
+        </section>
+
+        <!-- [BARU] Halaman Statistik -->
+        <section id="page-statistik" class="page">
+             <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-2xl font-bold mb-4">📈 Statistik Kehadiran</h2>
+                <div class="flex flex-wrap gap-4 mb-4 items-end">
+                    <div><label for="filter-kelas-statistik" class="block text-sm font-medium text-gray-700 mb-1">Kelas:</label><select id="filter-kelas-statistik" class="p-2 border border-gray-300 rounded-md shadow-sm"><option value="semua">Semua Kelas</option><option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option></select></div>
+                    <div><label for="filter-tanggal-mulai-statistik" class="block text-sm font-medium text-gray-700 mb-1">Dari Tanggal:</label><input type="date" id="filter-tanggal-mulai-statistik" class="p-2 border border-gray-300 rounded-md shadow-sm"></div>
+                    <div><label for="filter-tanggal-akhir-statistik" class="block text-sm font-medium text-gray-700 mb-1">Sampai Tanggal:</label><input type="date" id="filter-tanggal-akhir-statistik" class="p-2 border border-gray-300 rounded-md shadow-sm"></div>
                 </div>
+                <div class="overflow-x-auto"><table class="min-w-full bg-white"><thead class="bg-gray-50"><tr><th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Siswa</th><th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kelas</th><th class="py-3 px-4 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Hadir</th><th class="py-3 px-4 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Sakit</th><th class="py-3 px-4 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Izin</th><th class="py-3 px-4 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Alfa</th></tr></thead><tbody id="tabel-statistik" class="divide-y divide-gray-200"></tbody></table></div>
             </div>
         </section>
 
@@ -209,18 +138,14 @@
         <section id="page-ekspor" class="page">
             <div class="bg-white p-6 rounded-lg shadow max-w-2xl mx-auto text-center">
                 <h2 class="text-2xl font-bold mb-4">📦 Ekspor Data Presensi</h2>
-                <p class="text-gray-600 mb-6">Unduh data rekapitulasi presensi ke dalam format file Excel. Pilih filter yang diinginkan sebelum mengunduh.</p>
-                <div class="max-w-xs mx-auto mb-6">
-                    <label for="filter-kelas-ekspor" class="block text-sm font-medium text-gray-700 mb-1">Pilih Kelas:</label>
-                    <select id="filter-kelas-ekspor" class="w-full p-2 border border-gray-300 rounded-md shadow-sm">
-                        <option value="semua">Semua Kelas</option>
-                        <option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option>
-                    </select>
+                <p class="text-gray-600 mb-6">Unduh rekapitulasi presensi dalam format file Excel. Pilih filter yang diinginkan sebelum mengunduh.</p>
+                <div class="space-y-4">
+                    <div><label for="filter-kelas-ekspor" class="block text-sm font-medium text-gray-700 mb-1">Pilih Kelas:</label><select id="filter-kelas-ekspor" class="w-full max-w-xs mx-auto p-2 border border-gray-300 rounded-md shadow-sm"><option value="semua">Semua Kelas</option><option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option><option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option><option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option><option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="6A">Kelas 6A</option><option value="6B">Kelas 6B</option><option value="6C">Kelas 6C</option></select></div>
+                    <div><label for="tipe-ekspor" class="block text-sm font-medium text-gray-700 mb-1">Tipe Rekap:</label><select id="tipe-ekspor" class="w-full max-w-xs mx-auto p-2 border border-gray-300 rounded-md shadow-sm"><option value="mingguan">Mingguan</option><option value="bulanan">Bulanan</option></select></div>
+                    <div id="container-ekspor-mingguan"><label for="filter-minggu-ekspor" class="block text-sm font-medium text-gray-700 mb-1">Pilih Minggu:</label><input type="week" id="filter-minggu-ekspor" class="w-full max-w-xs mx-auto p-2 border border-gray-300 rounded-md shadow-sm"></div>
+                    <div id="container-ekspor-bulanan" class="hidden"><label for="filter-bulan-ekspor" class="block text-sm font-medium text-gray-700 mb-1">Pilih Bulan:</label><input type="month" id="filter-bulan-ekspor" class="w-full max-w-xs mx-auto p-2 border border-gray-300 rounded-md shadow-sm"></div>
                 </div>
-                <button id="btn-ekspor" class="btn-primary text-white font-bold py-3 px-6 rounded-md shadow-lg inline-flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
-                    <span>Ekspor ke Excel</span>
-                </button>
+                <button id="btn-ekspor" class="btn-primary text-white font-bold py-3 px-6 rounded-md shadow-lg inline-flex items-center space-x-2 mt-6"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" /></svg><span>Ekspor ke Excel</span></button>
             </div>
         </section>
 
@@ -231,7 +156,7 @@
         <p>DESIGN BY JUNID</p>
     </footer>
 
-    <!-- [BARU] Firebase SDK -->
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
@@ -239,8 +164,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-            // --- [PENTING] KONFIGURASI FIREBASE ---
-            // Kode ini sudah diganti dengan konfigurasi Anda.
             const firebaseConfig = {
               apiKey: "AIzaSyBYFpugN9OF9tif-kiL3jFTx9eZu9s2tzc",
               authDomain: "presensi-siswa-sdn-008-purnama.firebaseapp.com",
@@ -250,11 +173,10 @@
               appId: "1:816637936645:web:55d4267bee95b4c03d086c"
             };
 
-            // --- Inisialisasi Firebase ---
             try {
                 firebase.initializeApp(firebaseConfig);
             } catch(e) {
-                console.error("Error inisialisasi Firebase. Pastikan Anda sudah mengisi firebaseConfig dengan benar.", e);
+                console.error("Error inisialisasi Firebase:", e);
                 alert("Gagal terhubung ke database. Cek konfigurasi Firebase Anda.");
                 return;
             }
@@ -263,7 +185,6 @@
             const siswaCollection = db.collection("siswa");
             const presensiCollection = db.collection("presensi");
 
-            // --- Variabel Lokal untuk menampung data dari Firebase ---
             let localDataSiswa = [];
             let localDataPresensi = [];
 
@@ -275,9 +196,6 @@
             const dateEl = document.getElementById('date');
             const tabelSiswaBody = document.getElementById('tabel-siswa');
             const filterKelasSiswa = document.getElementById('filter-kelas-siswa');
-            const tabelRekapBody = document.getElementById('tabel-rekap');
-            const btnEkspor = document.getElementById('btn-ekspor');
-            const tanggalRekapInput = document.getElementById('filter-tanggal-rekap');
             const btnTambahSiswa = document.getElementById('btn-tambah-siswa');
             const formTambahSiswa = document.getElementById('form-tambah-siswa');
             const formAddStudent = document.getElementById('form-add-student');
@@ -287,7 +205,20 @@
             const btnHadirSemua = document.getElementById('btn-hadir-semua');
             const btnSimpanPresensi = document.getElementById('btn-simpan-presensi');
             const tanggalPresensiInput = document.getElementById('tanggal-presensi');
-
+            const tabelRekapBody = document.getElementById('tabel-rekap');
+            const filterKelasRekap = document.getElementById('filter-kelas-rekap');
+            const filterTanggalRekap = document.getElementById('filter-tanggal-rekap');
+            const tabelStatistikBody = document.getElementById('tabel-statistik');
+            const filterKelasStatistik = document.getElementById('filter-kelas-statistik');
+            const filterTglMulaiStatistik = document.getElementById('filter-tanggal-mulai-statistik');
+            const filterTglAkhirStatistik = document.getElementById('filter-tanggal-akhir-statistik');
+            const btnEkspor = document.getElementById('btn-ekspor');
+            const filterKelasEkspor = document.getElementById('filter-kelas-ekspor');
+            const tipeEkspor = document.getElementById('tipe-ekspor');
+            const containerEksporMingguan = document.getElementById('container-ekspor-mingguan');
+            const containerEksporBulanan = document.getElementById('container-ekspor-bulanan');
+            const filterMingguEkspor = document.getElementById('filter-minggu-ekspor');
+            const filterBulanEkspor = document.getElementById('filter-bulan-ekspor');
 
             // --- FUNGSI-FUNGSI ---
 
@@ -296,32 +227,25 @@
                 navLinks.forEach(link => link.classList.toggle('active', link.hash === `#${pageId}`));
                 window.location.hash = pageId;
                 if (pageId === 'absen') populatePresensiList(filterKelasPresensi.value);
+                if (pageId === 'statistik') updateStatistikView();
             }
 
             function updateClock() {
                 const now = new Date();
-                const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
                 if (timeEl) timeEl.textContent = now.toLocaleTimeString('id-ID');
-                if (dateEl) dateEl.textContent = now.toLocaleDateString('id-ID', optionsDate);
+                if (dateEl) dateEl.textContent = now.toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
             }
             
             function populateTabelSiswa(filterKelas = 'semua') {
                 tabelSiswaBody.innerHTML = '';
-                const sortedData = localDataSiswa.sort((a,b) => a.nama.localeCompare(b.nama));
+                const sortedData = [...localDataSiswa].sort((a,b) => a.nama.localeCompare(b.nama));
                 const filteredData = sortedData.filter(siswa => filterKelas === 'semua' || siswa.kelas === filterKelas);
-                
                 if (filteredData.length === 0) {
-                     tabelSiswaBody.innerHTML = `<tr><td colspan="3" class="text-center py-4">Belum ada data siswa. Silakan tambahkan siswa baru.</td></tr>`;
+                     tabelSiswaBody.innerHTML = `<tr><td colspan="3" class="text-center py-4">Belum ada data siswa.</td></tr>`;
                      return;
                 }
                 filteredData.forEach(siswa => {
-                    tabelSiswaBody.innerHTML += `
-                        <tr class="hover:bg-gray-50">
-                            <td class="py-3 px-4 text-sm font-medium text-gray-900">${siswa.nama}</td>
-                            <td class="py-3 px-4 text-sm text-gray-700">${siswa.kelas}</td>
-                            <td class="py-3 px-4 text-sm text-gray-700">${siswa.gender}</td>
-                        </tr>
-                    `;
+                    tabelSiswaBody.innerHTML += `<tr class="hover:bg-gray-50"><td class="py-3 px-4 text-sm font-medium text-gray-900">${siswa.nama}</td><td class="py-3 px-4 text-sm text-gray-700">${siswa.kelas}</td><td class="py-3 px-4 text-sm text-gray-700">${siswa.gender}</td></tr>`;
                 });
             }
             
@@ -331,48 +255,66 @@
                     listPresensiContainer.innerHTML = `<p class="col-span-full text-center text-gray-500">Silakan pilih kelas untuk menampilkan daftar siswa.</p>`;
                     return;
                 }
-                const sortedData = localDataSiswa.sort((a,b) => a.nama.localeCompare(b.nama));
+                const sortedData = [...localDataSiswa].sort((a,b) => a.nama.localeCompare(b.nama));
                 const filteredData = sortedData.filter(siswa => siswa.kelas === filterKelas);
-
                 if (filteredData.length === 0) {
-                    listPresensiContainer.innerHTML = `<p class="col-span-full text-center text-gray-500">Tidak ada siswa di kelas ini. Tambahkan siswa terlebih dahulu.</p>`;
+                    listPresensiContainer.innerHTML = `<p class="col-span-full text-center text-gray-500">Tidak ada siswa di kelas ini.</p>`;
                     return;
                 }
                 filteredData.forEach(siswa => {
                     const card = document.createElement('div');
-                    card.className = 'bg-white border border-gray-200 rounded-lg p-4 shadow-sm transition-all duration-300';
+                    card.className = 'bg-white border border-gray-200 rounded-lg p-4 shadow-sm';
                     card.setAttribute('data-student-id', siswa.id);
-                    card.innerHTML = `
-                        <h3 class="font-bold text-gray-800 truncate">${siswa.nama}</h3>
-                        <p class="text-xs text-gray-500 mb-3">Kelas ${siswa.kelas}</p>
-                        <div class="flex justify-around items-center text-xs">
-                            <div><input type="radio" name="status-${siswa.id}" id="hadir-${siswa.id}" value="Hadir" class="hidden radio-input" checked><label for="hadir-${siswa.id}" class="radio-label cursor-pointer p-2 rounded-full border w-12 text-center">Hadir</label></div>
-                            <div><input type="radio" name="status-${siswa.id}" id="sakit-${siswa.id}" value="Sakit" class="hidden radio-input"><label for="sakit-${siswa.id}" class="radio-label cursor-pointer p-2 rounded-full border w-12 text-center">Sakit</label></div>
-                            <div><input type="radio" name="status-${siswa.id}" id="izin-${siswa.id}" value="Izin" class="hidden radio-input"><label for="izin-${siswa.id}" class="radio-label cursor-pointer p-2 rounded-full border w-12 text-center">Izin</label></div>
-                            <div><input type="radio" name="status-${siswa.id}" id="alfa-${siswa.id}" value="Alfa" class="hidden radio-input"><label for="alfa-${siswa.id}" class="radio-label cursor-pointer p-2 rounded-full border w-12 text-center">Alfa</label></div>
-                        </div>
-                    `;
+                    card.innerHTML = `<h3 class="font-bold text-gray-800 truncate">${siswa.nama}</h3><p class="text-xs text-gray-500 mb-3">Kelas ${siswa.kelas}</p><div class="flex justify-around items-center text-xs"><div><input type="radio" name="status-${siswa.id}" id="hadir-${siswa.id}" value="Hadir" class="hidden radio-input" checked><label for="hadir-${siswa.id}" class="radio-label cursor-pointer p-2 rounded-full border w-12 text-center">Hadir</label></div><div><input type="radio" name="status-${siswa.id}" id="sakit-${siswa.id}" value="Sakit" class="hidden radio-input"><label for="sakit-${siswa.id}" class="radio-label cursor-pointer p-2 rounded-full border w-12 text-center">Sakit</label></div><div><input type="radio" name="status-${siswa.id}" id="izin-${siswa.id}" value="Izin" class="hidden radio-input"><label for="izin-${siswa.id}" class="radio-label cursor-pointer p-2 rounded-full border w-12 text-center">Izin</label></div><div><input type="radio" name="status-${siswa.id}" id="alfa-${siswa.id}" value="Alfa" class="hidden radio-input"><label for="alfa-${siswa.id}" class="radio-label cursor-pointer p-2 rounded-full border w-12 text-center">Alfa</label></div></div>`;
                     listPresensiContainer.appendChild(card);
                 });
             }
 
-            function populateTabelRekap() {
+            function populateTabelRekap(filterKelas = 'semua', filterTanggal = '') {
                 tabelRekapBody.innerHTML = '';
-                if (localDataPresensi.length === 0) {
-                     tabelRekapBody.innerHTML = `<tr><td colspan="5" class="text-center py-4">Belum ada data presensi.</td></tr>`;
+                let dataToDisplay = [...localDataPresensi];
+                if (filterKelas !== 'semua') dataToDisplay = dataToDisplay.filter(p => p.kelas === filterKelas);
+                if (filterTanggal) dataToDisplay = dataToDisplay.filter(p => p.tanggal === filterTanggal);
+                
+                if (dataToDisplay.length === 0) {
+                     tabelRekapBody.innerHTML = `<tr><td colspan="5" class="text-center py-4">Tidak ada data presensi yang cocok.</td></tr>`;
                      return;
                 }
-                const sortedPresensi = localDataPresensi.sort((a, b) => b.tanggal.localeCompare(a.tanggal));
+                const sortedPresensi = dataToDisplay.sort((a, b) => b.tanggal.localeCompare(a.tanggal) || a.nama.localeCompare(b.nama));
                 sortedPresensi.forEach(rekap => {
-                    tabelRekapBody.innerHTML += `
-                        <tr class="hover:bg-gray-50">
-                            <td class="py-3 px-4 text-sm text-gray-700">${new Date(rekap.tanggal).toLocaleDateString('id-ID', {day: '2-digit', month: '2-digit', year: 'numeric'})}</td>
-                            <td class="py-3 px-4 text-sm font-medium text-gray-900">${rekap.nama}</td>
-                            <td class="py-3 px-4 text-sm text-gray-700">${rekap.kelas}</td>
-                            <td class="py-3 px-4 text-sm text-gray-700">${rekap.status}</td>
-                            <td class="py-3 px-4 text-sm text-gray-700">${rekap.keterangan}</td>
-                        </tr>
-                    `;
+                    tabelRekapBody.innerHTML += `<tr class="hover:bg-gray-50"><td class="py-3 px-4 text-sm text-gray-700">${new Date(rekap.tanggal+'T00:00:00').toLocaleDateString('id-ID', {day: '2-digit', month: '2-digit', year: 'numeric'})}</td><td class="py-3 px-4 text-sm font-medium text-gray-900">${rekap.nama}</td><td class="py-3 px-4 text-sm text-gray-700">${rekap.kelas}</td><td class="py-3 px-4 text-sm text-gray-700">${rekap.status}</td><td class="py-3 px-4 text-sm text-gray-700">${rekap.keterangan}</td></tr>`;
+                });
+            }
+            
+            function calculateStats(filterKelas, startDate, endDate) {
+                const filteredStudents = [...localDataSiswa].filter(s => filterKelas === 'semua' || s.kelas === filterKelas);
+                const filteredPresensi = [...localDataPresensi].filter(p => {
+                    const tgl = p.tanggal;
+                    return (!startDate || tgl >= startDate) && (!endDate || tgl <= endDate);
+                });
+
+                return filteredStudents.map(siswa => {
+                    const stats = { Hadir: 0, Sakit: 0, Izin: 0, Alfa: 0 };
+                    filteredPresensi.filter(p => p.nama === siswa.nama).forEach(p => {
+                        if (stats.hasOwnProperty(p.status)) stats[p.status]++;
+                    });
+                    return { 'Nama Siswa': siswa.nama, Kelas: siswa.kelas, ...stats };
+                }).sort((a, b) => a['Nama Siswa'].localeCompare(b['Nama Siswa']));
+            }
+
+            function updateStatistikView() {
+                const kelas = filterKelasStatistik.value;
+                const tglMulai = filterTglMulaiStatistik.value;
+                const tglAkhir = filterTglAkhirStatistik.value;
+                const statsData = calculateStats(kelas, tglMulai, tglAkhir);
+                
+                tabelStatistikBody.innerHTML = '';
+                if(statsData.length === 0) {
+                    tabelStatistikBody.innerHTML = `<tr><td colspan="6" class="text-center py-4">Tidak ada data untuk ditampilkan.</td></tr>`;
+                    return;
+                }
+                statsData.forEach(stat => {
+                    tabelStatistikBody.innerHTML += `<tr class="hover:bg-gray-50"><td class="py-3 px-4 text-sm font-medium text-gray-900">${stat['Nama Siswa']}</td><td class="py-3 px-4 text-sm">${stat.Kelas}</td><td class="py-3 px-4 text-sm text-center">${stat.Hadir}</td><td class="py-3 px-4 text-sm text-center">${stat.Sakit}</td><td class="py-3 px-4 text-sm text-center">${stat.Izin}</td><td class="py-3 px-4 text-sm text-center">${stat.Alfa}</td></tr>`;
                 });
             }
             
@@ -383,7 +325,7 @@
                 const csvContent = keys.join(separator) + '\n' + rows.map(row => {
                     return keys.map(k => {
                         let cell = row[k] === null || row[k] === undefined ? '' : row[k];
-                        cell = cell instanceof Date ? cell.toLocaleString() : cell.toString().replace(/"/g, '""');
+                        cell = cell.toString().replace(/"/g, '""');
                         if (cell.search(/("|,|\n)/g) >= 0) cell = `"${cell}"`;
                         return cell;
                     }).join(separator);
@@ -408,6 +350,9 @@
             filterKelasSiswa.addEventListener('change', e => populateTabelSiswa(e.target.value));
             filterKelasPresensi.addEventListener('change', e => populatePresensiList(e.target.value));
             btnHadirSemua.addEventListener('click', () => listPresensiContainer.querySelectorAll('input[type="radio"][value="Hadir"]').forEach(rb => rb.checked = true));
+            
+            [filterKelasRekap, filterTanggalRekap].forEach(el => el.addEventListener('change', () => populateTabelRekap(filterKelasRekap.value, filterTanggalRekap.value)));
+            [filterKelasStatistik, filterTglMulaiStatistik, filterTglAkhirStatistik].forEach(el => el.addEventListener('change', updateStatistikView));
 
             btnSimpanPresensi.addEventListener('click', () => {
                 const tanggal = tanggalPresensiInput.value;
@@ -422,13 +367,7 @@
                     if (selectedStatus) {
                         const siswaData = localDataSiswa.find(s => s.id === studentId);
                         const newPresensiRef = presensiCollection.doc();
-                        batch.set(newPresensiRef, {
-                            tanggal: tanggal,
-                            nama: siswaData.nama,
-                            kelas: siswaData.kelas,
-                            status: selectedStatus.value,
-                            keterangan: '-' 
-                        });
+                        batch.set(newPresensiRef, { tanggal: tanggal, nama: siswaData.nama, kelas: siswaData.kelas, status: selectedStatus.value, keterangan: '-' });
                     }
                 });
                 batch.commit().then(() => {
@@ -437,30 +376,43 @@
                 }).catch(e => console.error("Error menyimpan presensi: ", e));
             });
 
+            tipeEkspor.addEventListener('change', (e) => {
+                containerEksporMingguan.classList.toggle('hidden', e.target.value !== 'mingguan');
+                containerEksporBulanan.classList.toggle('hidden', e.target.value !== 'bulanan');
+            });
+
             btnEkspor.addEventListener('click', function() {
-                const filterKelas = document.getElementById('filter-kelas-ekspor').value;
-                const dataToExport = localDataPresensi.filter(p => filterKelas === 'semua' || p.kelas === filterKelas);
-                const today = new Date().toLocaleDateString('id-ID', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/\//g, '-');
-                exportToCsv(`rekap-presensi-${today}.csv`, dataToExport);
+                const kelas = filterKelasEkspor.value;
+                const tipe = tipeEkspor.value;
+                let startDate, endDate, fileName;
+
+                if (tipe === 'mingguan') {
+                    const weekValue = filterMingguEkspor.value;
+                    if (!weekValue) { alert("Pilih minggu terlebih dahulu."); return; }
+                    const year = parseInt(weekValue.substring(0, 4));
+                    const week = parseInt(weekValue.substring(6));
+                    const firstDayOfYear = new Date(year, 0, 1);
+                    const days = (week - 1) * 7;
+                    startDate = new Date(firstDayOfYear.setDate(firstDayOfYear.getDate() + days - firstDayOfYear.getDay() + 1));
+                    endDate = new Date(new Date(startDate).setDate(startDate.getDate() + 6));
+                    fileName = `rekap-mingguan-${weekValue}.csv`;
+                } else { // bulanan
+                    const monthValue = filterBulanEkspor.value;
+                    if (!monthValue) { alert("Pilih bulan terlebih dahulu."); return; }
+                    startDate = new Date(monthValue + '-01');
+                    endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0);
+                    fileName = `rekap-bulanan-${monthValue}.csv`;
+                }
+                
+                const dataToExport = calculateStats(kelas, startDate.toISOString().split('T')[0], endDate.toISOString().split('T')[0]);
+                exportToCsv(fileName, dataToExport);
             });
 
-            btnTambahSiswa.addEventListener('click', () => {
-                formTambahSiswa.classList.remove('hidden');
-                btnTambahSiswa.classList.add('hidden');
-            });
-            btnBatalTambah.addEventListener('click', () => {
-                formTambahSiswa.classList.add('hidden');
-                btnTambahSiswa.classList.remove('hidden');
-                formAddStudent.reset();
-            });
-
+            btnTambahSiswa.addEventListener('click', () => { formTambahSiswa.classList.remove('hidden'); btnTambahSiswa.classList.add('hidden'); });
+            btnBatalTambah.addEventListener('click', () => { formTambahSiswa.classList.add('hidden'); btnTambahSiswa.classList.remove('hidden'); formAddStudent.reset(); });
             formAddStudent.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const newStudent = {
-                    nama: document.getElementById('input-nama').value,
-                    kelas: document.getElementById('input-kelas').value,
-                    gender: document.getElementById('input-gender').value,
-                };
+                const newStudent = { nama: document.getElementById('input-nama').value, kelas: document.getElementById('input-kelas').value, gender: document.getElementById('input-gender').value };
                 siswaCollection.add(newStudent).then(() => {
                     alert(`Siswa baru "${newStudent.nama}" berhasil ditambahkan!`);
                     formAddStudent.reset();
@@ -472,22 +424,31 @@
             // --- INISIALISASI & REAL-TIME LISTENER ---
 
             const today = new Date().toISOString().split('T')[0];
-            tanggalPresensiInput.value = today;
-            tanggalRekapInput.value = today;
+            [tanggalPresensiInput, filterTanggalRekap, filterTglAkhirStatistik].forEach(el => el.value = today);
+            const oneMonthAgo = new Date(new Date().setMonth(new Date().getMonth() - 1)).toISOString().split('T')[0];
+            filterTglMulaiStatistik.value = oneMonthAgo;
+
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const day = now.getDate();
+            const week = Math.ceil((day + new Date(year, now.getMonth(), 1).getDay()) / 7);
+            filterBulanEkspor.value = `${year}-${month}`;
+            filterMingguEkspor.value = `${year}-W${week.toString().padStart(2, '0')}`;
 
             updateClock();
             setInterval(updateClock, 1000);
 
-            // Listener untuk data siswa
             siswaCollection.onSnapshot(snapshot => {
                 localDataSiswa = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 populateTabelSiswa(filterKelasSiswa.value);
+                updateStatistikView();
             }, err => console.error("Error fetching siswa: ", err));
 
-            // Listener untuk data presensi
             presensiCollection.onSnapshot(snapshot => {
                 localDataPresensi = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                populateTabelRekap();
+                populateTabelRekap(filterKelasRekap.value, filterTanggalRekap.value);
+                updateStatistikView();
             }, err => console.error("Error fetching presensi: ", err));
 
             const initialPage = window.location.hash ? window.location.hash.substring(1) : 'beranda';
